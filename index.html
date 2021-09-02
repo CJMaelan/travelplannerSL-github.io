@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    @font-face {
+        font-family: "customFont";
+        src: url("C:/Users/qalma/Documents/Webbapplikationer 1/SL-App/FredokaOne-Regular.ttf");
+    }</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleSL.css";>
+    <title>SL projekt C-J M.</title>
+</head>
+<body>
+    <div class="box circle inner-border">
+    <h1>SL travelplanner by C-J</h1>
+    <h2 class="from">From:</h2>
+    <input type="text" id="inputTextBox" placeholder="Station" class="inputBoxFrom circle">
+    <input type="button" id="searchBtnFrom" value="Search" class="btnFrom circle" onclick=searchButtonClick();>
+    <h2 class ="results">Results:</h2>
+    <ul id="searchOutputList"></ul>
+    <input type="button" id="searchBtnResults" value="" class="btnResults circle" onclick=searchButtonClick1();>
+    <table id="searchOutputTable">
+    </table>
+    <br>
+    <input type="button" id="clearEverything" value="Clear Data" class="btnClear circle" onclick=clearDataButtonClick();>
+    </div>
+    <script src="SLscript.js"></script>
+</body>
+</html>

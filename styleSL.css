@@ -1,0 +1,114 @@
+@font-face {
+    font-family: customFont;
+    src: url(FredokaOne-Regular.ttf);
+}
+
+body {
+    background-color:black;
+    resize: both;
+    overflow: auto;
+    font-family: "customFont";
+    
+}
+
+h1{
+    color: #8fd547;
+    text-align: center;
+    resize: both;
+    overflow: auto;
+}
+
+ul{
+    color: #8fd547;
+    margin-top: 1.5%;
+    margin-right: 10%;
+    float: center;
+    list-style:circle;
+    list-style-position:inside;
+    text-align: center;
+}
+
+table{
+    color: #8fd547;
+    margin-left: 42.5%;
+    float:center;
+    text-align: left;
+    
+
+}
+
+
+
+.from {
+    color: #8fd547;
+    text-align: left;
+    margin-left: 32.5%;
+    float: left;
+}
+
+.results{
+    color: #8fd547;
+    margin-top: 15%;
+    margin-right: 30%;
+    float: center;
+    text-align: center;
+}
+
+.box {
+    width: 1200px;
+    min-height: 750px;
+    background: #531C91;
+    margin: auto;
+
+}
+
+.circle{
+border-radius: 10%;
+}
+.inner-border{
+    border: 2px solid black;
+    box-shadow: inset 0px 0px 0px 5p;
+    box-sizing: border-box;
+
+}
+
+.inputBoxFrom{
+float: left;
+margin-top:15px;
+margin-left: 25px;
+height: 25px;
+width: 100px;
+font-family: "customFont";
+font-size: 17px;
+background-color: #8fd547;
+color: #531C91;
+}
+.btnFrom{
+    float: left;
+    margin-top:15px;
+    margin-left: 25px;
+    height: 30px;
+    width: 100px;
+    background-color: #8fd547;
+    color: #531C91;
+    font-family: "customFont";
+}
+.btnResults{
+    border: none;
+    background:none;
+}
+.btnClear {
+    float: center;
+    position: static;
+    margin-top: 5%;
+    margin-left: 46.5%;
+    margin-bottom: 2%;
+    position:relative;
+    height: 30px;
+    width: 100px;
+    background-color: #8fd547;
+    color: #531C91;
+    font-family: "customFont";
+    font-size: 100px;
+
+}
