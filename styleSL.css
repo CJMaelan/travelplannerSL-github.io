@@ -92,6 +92,7 @@ color: #531C91;
     background-color: #8fd547;
     color: #531C91;
     font-family: "customFont";
+    z-index: 99;
 }
 .btnResults{
     border: none;
