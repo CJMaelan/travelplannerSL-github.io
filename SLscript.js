@@ -10,6 +10,10 @@ const clearDataButton = document.getElementById('clearEverything');
 var stationId = "";
 var int, timer, btn = document.getElementById('searchBtnResults');
 
+//fetchar in API:et med API nyckeln samt textInput:en ifrån användaren som jag nu har satt till 1 resultat
+//till för att enbart visa avgångar ifrån en station.
+//laddas därefter in i JSON som laddar in den i destinationData parametern som sedan används av
+//funktionen showStations
 function getStations(textInput, searchResults, list) 
 {    
 fetch('https://api.sl.se/api2/typeahead.json?key=' + locationApiKey + '&searchstring=' + textInput + '&stationsonly=true&maxresults=1')
@@ -19,6 +23,8 @@ fetch('https://api.sl.se/api2/typeahead.json?key=' + locationApiKey + '&searchst
    })
 }
 
+//funktion som skapar upp element för att visa namnet på platsen samt SiteID:et som göms undan
+//läggs in i listan searchResults
 function showStations(destinationData, searchResults){
     
     for(let i in destinationData.ResponseData){
@@ -39,9 +45,13 @@ function showStations(destinationData, searchResults){
     
 }
 
-function timeDepartures(stationId, station){
+//Använder Realtids API:et för att visa avgångar ifrån stationen användaren har sökt efter genom att använda
+//sig av ID:et på stationen. Hämtar datan och gör den till json som slängs in i ett objekt, som vi sedan går igenom för
+//att kolla information som transporttyp, destination, tid till avgång och linje/bussnr. 
+//för varje fordon så skapas en ny array som använder sig av tidigare nämnd information
+//sedan presenteras information i form av <tr>
+function timeDepartures(stationId){
 
-    let departureInfo = {Station: station, Departures: []};
     fetch('https://api.sl.se/api2/realtimedeparturesV4.json?key='+ realTimeInfoApiKey + '&siteid=' + stationId + '&timewindow=10')
     .then(response => response.json())
     .then(function (data) {
@@ -55,7 +65,7 @@ function timeDepartures(stationId, station){
                 DisplayTime: x.DisplayTime,
                 TransportMode: x.TransportMode
             };
-            departureInfo.Departures.push(info);
+            
             console.log(info);
             
                 listOption = document.createElement('tr');
@@ -82,6 +92,9 @@ function timeDepartures(stationId, station){
 }
 
 
+//Funktion som körs igång efter att man har klickat på sökknappen som rensar bort gammal resultatdata
+//och därefter klickar på den gömda knappen igen för att få fram uppdaterad data. Ska vara 60000 för att uppdatera
+//varje minut
 function triggerClick(){
     
     document.onclick = function () {
@@ -97,7 +110,9 @@ function triggerClick(){
     }
 }
 
-
+//Sökknappen som först tar inputen av användaren och kör metoden getStations för att få fram
+//namnet och SiteID:et. Därefter körs triggerClick metoden 0.5 sekunder senare som klickar på
+//searchButtonClick1 som tar fram avgångarna. 
 async function searchButtonClick(searchButton, textInput, list)
 {
     const searchInput = inputTextBox.value;
@@ -109,12 +124,13 @@ async function searchButtonClick(searchButton, textInput, list)
     }, wait);   
 } 
 
+//Den gömda knappen som vid klick visar avgångarna för platsen
 function searchButtonClick1(searchButton1, textInput, list)
 {
     const searchStationId = stationId.value;
     timeDepartures(searchStationId, searchResultsInfo, list);
 } 
-
+//Rensar allt på sidan genom att ladda om den.
 function clearDataButtonClick(clearDataButton){
     window.location.reload();
     /* var table = document.getElementById("searchOutputTable");
@@ -124,6 +140,10 @@ function clearDataButtonClick(clearDataButton){
 }
 
 /* GAMMAL KOD 
+function timeDepartures(stationId, station)
+let departureInfo = {Station: station, Departures: []};
+departureInfo.Departures.push(info);
+
 async function getapi(url){
     const response = await fetch(url);
     var data = await response.json(url);
