@@ -12,7 +12,7 @@ var int, timer, btn = document.getElementById('searchBtnResults');
 
 function getStations(textInput, searchResults, list) 
 {    
-fetch('http://api.sl.se/api2/typeahead.json?key=' + locationApiKey + '&searchstring=' + textInput + '&stationsonly=true&maxresults=1')
+fetch('https://api.sl.se/api2/typeahead.json?key=' + locationApiKey + '&searchstring=' + textInput + '&stationsonly=true&maxresults=1')
 .then((response) => response.json())
 .then((destinationData) => {
     showStations(destinationData, searchResults, list);
@@ -42,7 +42,7 @@ function showStations(destinationData, searchResults){
 function timeDepartures(stationId, station){
 
     let departureInfo = {Station: station, Departures: []};
-    fetch('http://api.sl.se/api2/realtimedeparturesV4.json?key='+ realTimeInfoApiKey + '&siteid=' + stationId + '&timewindow=10')
+    fetch('https://api.sl.se/api2/realtimedeparturesV4.json?key='+ realTimeInfoApiKey + '&siteid=' + stationId + '&timewindow=10')
     .then(response => response.json())
     .then(function (data) {
         let departureData = data.ResponseData;
