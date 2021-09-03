@@ -106,7 +106,7 @@ function triggerClick(){
                 table.innerHTML = "";
                 btn.click();
             }, 3000);
-        }, 6000);
+        }, 60000);
     }
 }
 
