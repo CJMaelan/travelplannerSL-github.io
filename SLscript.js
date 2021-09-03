@@ -105,7 +105,7 @@ function triggerClick(){
                 var table = document.getElementById("searchOutputTable");
                 table.innerHTML = "";
                 btn.click();
-            }, 3000);
+            }, 2500);
         }, 60000);
     }
 }
