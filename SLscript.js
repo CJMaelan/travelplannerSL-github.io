@@ -118,7 +118,7 @@ async function searchButtonClick(searchButton, textInput, list)
     const searchInput = inputTextBox.value;
     getStations(searchInput, searchResults, list);
     triggerClick();
-    var wait = 500;
+    var wait = 1500;
     setTimeout(function() { 
         btn.click();
     }, wait);   
