@@ -10,16 +10,16 @@ const clearDataButton = document.getElementById('clearEverything');
 var stationId = "";
 var int, timer, btn = document.getElementById('searchBtnResults');
 
-function getDestination(textInput, searchResults, list) 
+function getStations(textInput, searchResults, list) 
 {    
 fetch('http://api.sl.se/api2/typeahead.json?key=' + locationApiKey + '&searchstring=' + textInput + '&stationsonly=true&maxresults=1')
 .then((response) => response.json())
 .then((destinationData) => {
-    getStations(destinationData, searchResults, list);
+    showStations(destinationData, searchResults, list);
    })
 }
 
-function getStations(destinationData, searchResults){
+function showStations(destinationData, searchResults){
     
     for(let i in destinationData.ResponseData){
         const createEl = document.createElement('li');
@@ -101,7 +101,7 @@ function triggerClick(){
 async function searchButtonClick(searchButton, textInput, list)
 {
     const searchInput = inputTextBox.value;
-    getDestination(searchInput, searchResults, list);
+    getStations(searchInput, searchResults, list);
     triggerClick();
     var wait = 500;
     setTimeout(function() { 
@@ -116,9 +116,10 @@ function searchButtonClick1(searchButton1, textInput, list)
 } 
 
 function clearDataButtonClick(clearDataButton){
-    var table = document.getElementById("searchOutputTable");
+    window.location.reload();
+    /* var table = document.getElementById("searchOutputTable");
                 table.innerHTML = "";
-    document.getElementById("searchOutputList").innerHTML = "";
+    document.getElementById("searchOutputList").innerHTML = ""; */
     
 }
 
